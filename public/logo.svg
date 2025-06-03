@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 135.46667 135.46667"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0271535"
+     inkscape:cx="337.34004"
+     inkscape:cy="483.3747"
+     inkscape:window-width="2560"
+     inkscape:window-height="1371"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#f8faf9;stop-opacity:0.94006348;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#f8f7ff;stop-opacity:0.42670149;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="39.926277"
+       y1="129.05203"
+       x2="169.75108"
+       y2="183.66087"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0393332,0,0,1.0560293,-41.496705,-68.549395)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:url(#linearGradient2);stroke-width:2.09529"
+       id="rect1"
+       width="135.46666"
+       height="135.46666"
+       x="0"
+       y="0"
+       ry="25.570013" />
+    <text
+       xml:space="preserve"
+       style="font-size:108.748px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:15.413"
+       x="23.90341"
+       y="102.85606"
+       id="text2"
+       transform="scale(0.99206337,1.0080001)"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="fill:#000000;fill-opacity:1;stroke-width:15.413"
+         x="23.90341"
+         y="102.85606">ඞ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20.6969px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:2.09529"
+       x="21.588997"
+       y="124.67647"
+       id="text3"
+       transform="scale(0.99206335,1.0080001)"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6969px;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';stroke-width:2.09529"
+         x="21.588997"
+         y="124.67647"
+         dx="0 0 0 0 0 -3.6562915">hazak<tspan
+   style="fill:#834b47;fill-opacity:1;stroke-width:2.09529"
+   id="tspan5">.</tspan><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6969px;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';fill:#000000;fill-opacity:1;stroke-width:2.09529"
+   id="tspan4"
+   dx="-4.49441">us</tspan></tspan></text>
+  </g>
+</svg>
