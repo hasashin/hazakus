@@ -1,11 +1,13 @@
 export function Footer() {
   return (
-    <div className="bottom-auto self-center-safe text-center h-32 w-auto">
-      <p>
-        &copy;&nbsp;
-        { new Date().getFullYear() }
-        &nbsp;Dominik Hażak
-      </p>
+    <div className="h-footer min-w-screen">
+      <div className="flex w-5xl mx-auto items-center justify-center">
+        <p>
+          &copy;&nbsp;
+          { new Date().getFullYear() }
+          &nbsp;Dominik Hażak
+        </p>
+      </div>
     </div>
   )
 }

@@ -48,6 +48,20 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --header-height: calc(var(--spacing) * 10);
+  --footer-height: calc(var(--spacing) * 10);
+}
+
+.h-header {
+  height: var(--header-height);
+}
+
+.h-footer {
+  height: var(--footer-height);
+}
+
+.min-h-calc-hf{
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - 3*var(--spacing));
 }
 
 a {
@@ -72,7 +86,7 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -82,14 +96,14 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:hover {
+} */
+/* button:hover {
   border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {

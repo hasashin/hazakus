@@ -5,7 +5,8 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { Link } from '@radix-ui/react-navigation-menu'
+import { Link } from 'react-router'
+import { Separator } from '@/components/ui/separator'
 
 export interface MainMenuProps {
   pages: { url: string, title: string }[]
@@ -17,8 +18,9 @@ export function MainMenu(pages: MainMenuProps) {
       <NavigationMenuList>
         {pages.pages.map(page => (
           <NavigationMenuItem key={page.url}>
+            <Separator orientation="vertical" />
             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href={page.url} className="text-primary">{page.title}</Link>
+              <Link to={page.url} className="text-primary!">{page.title}</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
         ))}
