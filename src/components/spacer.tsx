@@ -1,10 +1,7 @@
-type SpacerProps = { flex?: boolean }
-export function Spacer({ flex }: SpacerProps) {
-  let classList = 'm-auto'
-  if (flex) {
-    classList += ' flex-1'
-  }
+type SpacerProps = { className?: string }
+export function Spacer({ className }: SpacerProps) {
+  className += ' flex-grow'
   return (
-    <div className={classList} />
+    <div className={className} />
   )
 }

@@ -1,20 +1,30 @@
-import React from 'react'
 import { Link } from 'react-router'
 import { ModeToggle } from '@/components/mode-toggle'
 import { Button } from '@/components/ui/button'
 import { Spacer } from '@/components/spacer'
+import { MainMenu } from '@/components/main-menu'
+import pages from '@/lib/pages'
 
-type HeaderProps = { children: React.ReactNode }
-export function Header({ children }: HeaderProps) {
+export function Header() {
   return (
     <div className="h-header min-w-screen top-auto items-center-safe">
-      <div className="flex w-5xl mt-3 mx-auto items-left">
-        <Button variant="ghost" className=""><Link to="/" className="text-4xl text-primary!">ඞ</Link></Button>
-        <div className="flex flex-col items-start justify-center">
-          { children }
+      <div className="flex w-screen lg:w-5xl mt-3 lg:mx-auto items-left">
+        <div className="pl-2 md:pl-0">
+          <Button variant="ghost">
+            <Link to="/" className="text-4xl text-primary!">
+              ඞ
+            </Link>
+          </Button>
         </div>
-        <Spacer flex />
-        <ModeToggle />
+        <div className="hidden md:flex items-left w-full">
+          <MainMenu pages={pages} />
+          <Spacer />
+          <ModeToggle />
+        </div>
+        <div className="flex md:hidden items-left w-full pr-2">
+          <Spacer />
+          <MainMenu pages={pages} variant="mobile" />
+        </div>
       </div>
     </div>
   )
