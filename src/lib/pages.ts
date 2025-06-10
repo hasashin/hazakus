@@ -3,6 +3,14 @@ import { PortfolioPage } from '@/pages/portfolio'
 import { BioPage } from '@/pages/bio'
 import { ContactPage } from '@/pages/contact'
 
+type Page = { 
+  url: string
+  title: string
+  element: React.ComponentType
+}
+
+export type PagesList = Page[]
+
 export default [
   {
     url: '/',
