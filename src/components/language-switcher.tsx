@@ -21,8 +21,8 @@ export function LanguageSwitcher() {
   const [value, setValue] = React.useState(i18n.language.toUpperCase())
   const { t } = useTranslation()
 
-  const handleLanguageChange = (newLangName: string) => {
-    const newLang = languages.find(lang => lang.name === newLangName)?.code || 'pl'
+  const handleLanguageChange = (newLangValue: string) => {
+    const newLang = languages.find(lang => lang.code.toUpperCase() === newLangValue)?.code || 'pl'
     i18n.changeLanguage(newLang)
   }
   const cn = (...classes: string[]) => {

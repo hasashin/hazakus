@@ -7,7 +7,7 @@ import { resources } from '@/lib/languages'
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: navigator.language.split('-')[0],
+  lng: navigator.language.split('-')[0].toLowerCase(),
   fallbackLng: ['pl', 'dev'],
   interpolation: {
     escapeValue: false,
