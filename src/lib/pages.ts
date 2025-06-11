@@ -14,22 +14,22 @@ export type PagesList = Page[]
 export default [
   {
     url: '/',
-    title: 'Informacje',
+    title: 'menu_home',
     element: IndexPage,
   },
   {
     url: 'portfolio',
-    title: 'Portfolio',
+    title: 'menu_portfolio',
     element: PortfolioPage,
   },
   {
     url: 'bio',
-    title: 'Życiorys',
+    title: 'menu_bio',
     element: BioPage,
   },
   {
     url: 'contact',
-    title: 'Kontakt',
+    title: 'menu_contact',
     element: ContactPage,
   },
 ]

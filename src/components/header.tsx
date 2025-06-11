@@ -3,6 +3,7 @@ import { ModeToggle } from '@/components/mode-toggle'
 import { Button } from '@/components/ui/button'
 import { Spacer } from '@/components/spacer'
 import { MainMenu } from '@/components/main-menu'
+import { LanguageSwitcher } from '@/components/language-switcher'
 import pages from '@/lib/pages'
 
 export function Header() {
@@ -20,6 +21,7 @@ export function Header() {
           <MainMenu pages={pages} />
           <Spacer />
           <ModeToggle />
+          <LanguageSwitcher />
         </div>
         <div className="flex md:hidden items-left w-full pr-2">
           <Spacer />
