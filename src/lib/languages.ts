@@ -3,6 +3,7 @@ import translationPL from '@/locales/pl/strings.json'
 import translationDEV from '@/locales/dev/strings.json'
 import type { LocalePlural } from '@/types/common'
 import { strapiGet } from './utils'
+import i18n from 'i18next'
 
 export const resources = {
   en: {
@@ -36,6 +37,8 @@ export async function getLanguages(){
 
 export const languages = await getLanguages()
 
-export let locale = ''
+export let language = i18n.language
 
-export const setLocale = (newLocale: string) => {locale = newLocale}
+export const setLanguage = (newLocale: string) => {
+  i18n.changeLanguage(newLocale)
+}

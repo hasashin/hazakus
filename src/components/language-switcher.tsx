@@ -13,18 +13,16 @@ import {
 } from '@/components/ui/command'
 import { Button } from '@/components/ui/button'
 import { Check, ChevronsUpDown } from 'lucide-react'
-import { languages, setLocale, locale } from '@/lib/languages'
+import { languages, setLanguage, language } from '@/lib/languages'
 
 export function LanguageSwitcher() {
   const [open, setOpen] = React.useState(false)
-  const { i18n } = useTranslation()
-  const [value, setValue] = React.useState(i18n.language)
+  const [value, setValue] = React.useState(language)
   const { t } = useTranslation()
 
   const handleLanguageChange = (newLangValue: string) => {
     const newLang = languages.find(lang => lang.code === newLangValue)?.code || 'pl'
-    setLocale(newLang)
-    i18n.changeLanguage(locale)
+    setLanguage(newLang)
   }
   const cn = (...classes: string[]) => {
     return classes.filter(Boolean).join(' ')

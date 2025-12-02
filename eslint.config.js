@@ -2,10 +2,10 @@ import js from '@eslint/js'
 import stylistic from '@stylistic/eslint-plugin'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
+import { defineConfig } from 'eslint/config'
 
-export default tseslint.config(
+export default defineConfig(
   stylistic.configs.customize({
     // the following options are the default values
     indent: 2,
@@ -14,7 +14,7 @@ export default tseslint.config(
     jsx: true,
     // ...
   }),
-  { ignores: ['dist', 'src/lib', 'src/components/ui'] },
+  { ignores: ['dist', 'src/lib', 'src/components/ui', '.react-router'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
@@ -24,14 +24,9 @@ export default tseslint.config(
     },
     plugins: {
       'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
     },
   },
 )

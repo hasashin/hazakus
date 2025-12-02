@@ -30,5 +30,10 @@
       ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "**/.server/**/*",
+    "**/.client/**/*",
+    ".react-router/types/**/*"
+  ]
 }

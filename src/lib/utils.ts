@@ -6,16 +6,18 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export async function strapiGet(type: string, filters: {[key:string]: string}): Promise<any>{
-  const apiBase = import.meta.env.VITE_BackendHost;
-  const apiToken = import.meta.env.VITE_BackendApiKey;
-  const locale = 'pl';
-  let filtersString = '';
-  for(let filter in filters){
-    filtersString += `&${filter}=${filters[filter]}`
+export async function strapiGet(type: string, filters: {[key:string]: string}): Promise<any> {
+  const apiBase = import.meta.env.VITE_BackendHost
+  const apiToken = import.meta.env.VITE_BackendApiKey
+  const mappedFilters = []
+  for(const filter in filters){
+    mappedFilters.push(`${filter}=${filters[filter]}`)
   }
-  const requestUrl = `${apiBase}/api/${type}?locale=${locale}${filtersString}`;
-  console.log(`Sending request to ${requestUrl}`);
+  let requestUrl = `${apiBase}/api/${type}`
+  if (mappedFilters.length > 0){
+    requestUrl += `?${mappedFilters.join('&')}`
+  }
+  console.log(`Sending request to ${requestUrl}`)
   const response = await fetch(requestUrl, {
     method: 'GET',
     headers: {

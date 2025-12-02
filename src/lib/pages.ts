@@ -1,12 +1,9 @@
-import { IndexPage } from '@/pages/index'
-import { ContentPage } from '@/pages/content'
 import { strapiGet } from './utils'
-import type { CommonPlural } from '@/types/common'
+import type { CommonPlural } from '../types/common'
 
 type Page = { 
   url: string
   title: string
-  element: React.ComponentType
   isIndex: boolean
 }
 
@@ -25,7 +22,6 @@ export async function getPages() : Promise<PagesList> {
     pages.push({
       url: elem.url,
       title: elem.title,
-      element: elem.isIndex ? IndexPage : ContentPage,
       isIndex: elem.isIndex,
     });
   });
