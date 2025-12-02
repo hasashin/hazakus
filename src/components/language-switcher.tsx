@@ -13,17 +13,18 @@ import {
 } from '@/components/ui/command'
 import { Button } from '@/components/ui/button'
 import { Check, ChevronsUpDown } from 'lucide-react'
-import { languages } from '@/lib/languages'
+import { languages, setLocale, locale } from '@/lib/languages'
 
 export function LanguageSwitcher() {
   const [open, setOpen] = React.useState(false)
   const { i18n } = useTranslation()
-  const [value, setValue] = React.useState(i18n.language.toUpperCase())
+  const [value, setValue] = React.useState(i18n.language)
   const { t } = useTranslation()
 
   const handleLanguageChange = (newLangValue: string) => {
-    const newLang = languages.find(lang => lang.code.toUpperCase() === newLangValue)?.code || 'pl'
-    i18n.changeLanguage(newLang)
+    const newLang = languages.find(lang => lang.code === newLangValue)?.code || 'pl'
+    setLocale(newLang)
+    i18n.changeLanguage(locale)
   }
   const cn = (...classes: string[]) => {
     return classes.filter(Boolean).join(' ')
@@ -39,7 +40,7 @@ export function LanguageSwitcher() {
           className="justify-between"
         >
           {value
-            ? languages.find(language => language.code.toUpperCase() === value)?.name
+            ? languages.find(language => language.code === value)?.name
             : t('select_language')}
           <ChevronsUpDown className="opacity-50" />
         </Button>
@@ -51,7 +52,7 @@ export function LanguageSwitcher() {
               {languages.map(language => (
                 <CommandItem
                   key={language.code}
-                  value={language.code.toUpperCase()}
+                  value={language.code}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? '' : currentValue)
                     setOpen(false)
@@ -62,7 +63,7 @@ export function LanguageSwitcher() {
                   <Check
                     className={cn(
                       'ml-auto',
-                      value === language.code.toUpperCase() ? 'opacity-100' : 'opacity-0',
+                      value === language.code ? 'opacity-100' : 'opacity-0',
                     )}
                   />
                 </CommandItem>

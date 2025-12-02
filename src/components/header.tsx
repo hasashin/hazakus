@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Spacer } from '@/components/spacer'
 import { MainMenu } from '@/components/main-menu'
 import { LanguageSwitcher } from '@/components/language-switcher'
-import pages from '@/lib/pages'
+import { pages } from '@/lib/pages'
 
 export function Header() {
   return (

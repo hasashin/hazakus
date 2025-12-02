@@ -1,37 +1,18 @@
-import { Routes, Route } from 'react-router'
-import pages from '@/lib/pages'
-import { Layout } from '@/Layout'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import { resources } from '@/lib/languages'
-
-i18n.use(initReactI18next).init({
-  resources,
-  lng: navigator.language.split('-')[0].toLowerCase(),
-  fallbackLng: ['pl', 'dev'],
-  interpolation: {
-    escapeValue: false,
-  },
-})
+import { Outlet } from 'react-router'
+import { ThemeProvider } from './components/theme-provider'
+import { Header } from './components/header'
+import { Body } from './components/body'
+import { Footer } from './components/footer'
 
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        {
-          pages.map((page) => {
-            if (page.url === '/') {
-              return (
-                <Route index element={<page.element />} />
-              )
-            }
-            return (
-              <Route path={page.url} element={<page.element />} />
-            )
-          })
-        }
-      </Route>
-    </Routes>
+    <ThemeProvider>
+      <Header />
+      <Body>
+        <Outlet />
+      </Body>
+      <Footer />
+    </ThemeProvider>
   )
 }
 
