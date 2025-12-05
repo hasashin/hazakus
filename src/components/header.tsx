@@ -4,9 +4,13 @@ import { Button } from '@/components/ui/button'
 import { Spacer } from '@/components/spacer'
 import { MainMenu } from '@/components/main-menu'
 import { LanguageSwitcher } from '@/components/language-switcher'
-import pages from '@/lib/pages'
+import type { PagesList } from '@/lib/pages'
 
-export function Header() {
+export interface HeaderProps {
+  pages: PagesList
+}
+
+export function Header({ pages }: HeaderProps) {
   return (
     <div className="h-header min-w-screen top-auto items-center-safe">
       <div className="flex w-screen lg:w-5xl mt-3 lg:mx-auto items-left">

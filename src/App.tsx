@@ -1,38 +1,36 @@
-import { Routes, Route } from 'react-router'
-import pages from '@/lib/pages'
-import { Layout } from '@/Layout'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import { resources } from '@/lib/languages'
+import { Outlet } from 'react-router'
+import { ThemeProvider } from './components/theme-provider'
+import { Header } from './components/header'
+import { Body } from './components/body'
+import { Footer } from './components/footer'
+import { getPages, type PagesList } from './lib/pages'
+import type { Route } from './+types/App'
+import React from 'react'
 
-i18n.use(initReactI18next).init({
-  resources,
-  lng: navigator.language.split('-')[0].toLowerCase(),
-  fallbackLng: ['pl', 'dev'],
-  interpolation: {
-    escapeValue: false,
-  },
-})
-
-function App() {
-  return (
-    <Routes>
-      <Route element={<Layout />}>
-        {
-          pages.map((page) => {
-            if (page.url === '/') {
-              return (
-                <Route index element={<page.element />} />
-              )
-            }
-            return (
-              <Route path={page.url} element={<page.element />} />
-            )
-          })
-        }
-      </Route>
-    </Routes>
-  )
+export async function clientAction() {
+  const pages = await getPages()
+  return { pages: pages }
 }
 
-export default App
+export default function App({ actionData }: Route.ComponentProps) {
+  const [headerPages, setHeaderPages] = React.useState<PagesList>([])
+  if (headerPages.length === 0) {
+    getPages().then((fetchedPages) => {
+      setHeaderPages(fetchedPages)
+    })
+  }
+  if (actionData?.pages) {
+    if (actionData.pages !== headerPages) {
+      setHeaderPages(actionData.pages)
+    }
+  }
+  return (
+    <ThemeProvider>
+      <Header pages={headerPages} />
+      <Body>
+        <Outlet />
+      </Body>
+      <Footer />
+    </ThemeProvider>
+  )
+}
