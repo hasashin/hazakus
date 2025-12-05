@@ -37,8 +37,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
-      - name: Generate react-router types
-        run: npm run typegen
+      - name: Test types 
+        run: npm run typecheck
       - name: Build
         run: npm run build
       - name: Setup Pages
