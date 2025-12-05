@@ -1,5 +1,6 @@
 import { strapiGet } from './utils'
-import type { CommonPlural } from '../types/common'
+import type { StrapiResponse } from '../types/common'
+import { language } from './languages'
 
 type Page = { 
   url: string
@@ -17,8 +18,9 @@ export interface RouteListParams {
 
 export async function getPages() : Promise<PagesList> {
   let pages: PagesList = [];
-  const content = await strapiGet('pages', {});
-  (content as CommonPlural).data.map((elem) => {
+  const lang = language ?? 'pl'
+  const content = await strapiGet('pages', {locale: lang});
+  (content as StrapiResponse).data.map((elem) => {
     pages.push({
       url: elem.url,
       title: elem.title,
@@ -28,8 +30,4 @@ export async function getPages() : Promise<PagesList> {
   return pages;
 }
 
-export let pages = await getPages()
-
-export const refreshPages = async () => {
-  pages = await getPages();
-}
+export const pages = await getPages();

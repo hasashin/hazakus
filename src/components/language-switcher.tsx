@@ -14,11 +14,13 @@ import {
 import { Button } from '@/components/ui/button'
 import { Check, ChevronsUpDown } from 'lucide-react'
 import { languages, setLanguage, language } from '@/lib/languages'
+import { useSubmit } from 'react-router'
 
 export function LanguageSwitcher() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState(language)
   const { t } = useTranslation()
+  const submit = useSubmit()
 
   const handleLanguageChange = (newLangValue: string) => {
     const newLang = languages.find(lang => lang.code === newLangValue)?.code || 'pl'
@@ -55,6 +57,10 @@ export function LanguageSwitcher() {
                     setValue(currentValue === value ? '' : currentValue)
                     setOpen(false)
                     handleLanguageChange(currentValue)
+                    submit(
+                      { selectedLanguage: currentValue },
+                      { action: '/', method: 'post' },
+                    )
                   }}
                 >
                   {language.name}

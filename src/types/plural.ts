@@ -1,10 +1,4 @@
-export type StrapiStandardFields = {
-  id: number
-  documentId: string
-  createdAt: string
-  updatedAt: string
-  publishedAt: string
-}
+import type { StrapiStandardFields } from './common'
 
 export type StrapiPage = StrapiStandardFields & {
   url: string

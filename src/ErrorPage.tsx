@@ -4,13 +4,14 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Button } from './components/ui/button'
 import { Link } from 'react-router'
+import { ContentContainer } from '@/components/contentContainer'
 
-export function ErrorPage() {
+export default function ErrorPage() {
   return (
     <ThemeProvider>
-      <Header />
+      <Header pages={[]} />
       <Body>
-        <div className="flex-grow items-center align-middle justify-center">
+        <ContentContainer>
           <p className="text-center text-primary text-9xl mt-40">
             ඞ
           </p>
@@ -24,7 +25,7 @@ export function ErrorPage() {
               </Link>
             </Button>
           </div>
-        </div>
+        </ContentContainer>
       </Body>
       <Footer />
     </ThemeProvider>

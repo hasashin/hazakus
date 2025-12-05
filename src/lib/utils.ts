@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx"
-import type { LoaderFunctionArgs } from "react-router";
+import type { JSX } from "react"
 import { twMerge } from "tailwind-merge"
+import { Hazaksus } from '../components/hazaksus'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -17,7 +18,6 @@ export async function strapiGet(type: string, filters: {[key:string]: string}): 
   if (mappedFilters.length > 0){
     requestUrl += `?${mappedFilters.join('&')}`
   }
-  console.log(`Sending request to ${requestUrl}`)
   const response = await fetch(requestUrl, {
     method: 'GET',
     headers: {
@@ -25,7 +25,6 @@ export async function strapiGet(type: string, filters: {[key:string]: string}): 
     },
   });
   if (response.ok){
-    console.log('Got OK response');
     try{
       const respObj = await response.json();
       return respObj;
@@ -38,13 +37,7 @@ export async function strapiGet(type: string, filters: {[key:string]: string}): 
   return null;
 }
 
-export async function contentLoader({ request }: LoaderFunctionArgs){
-  console.log(`Loader Function url: ${request.url}`);
-  const content = await strapiGet('test', {});
-  return content;
-}
 
-export async function pagesLoader(){
-  const pagesList = await strapiGet('pages', {})
-  return pagesList
+export async function readPageContent(content: any): Promise<JSX.Element> {
+  return Hazaksus()
 }
