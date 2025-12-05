@@ -3,7 +3,7 @@ import { ThemeProvider } from './components/theme-provider'
 import { Header } from './components/header'
 import { Body } from './components/body'
 import { Footer } from './components/footer'
-import { pages, getPages, type PagesList } from './lib/pages'
+import { getPages, type PagesList } from './lib/pages'
 import type { Route } from './+types/App'
 import React from 'react'
 
@@ -13,7 +13,12 @@ export async function clientAction() {
 }
 
 export default function App({ actionData }: Route.ComponentProps) {
-  const [headerPages, setHeaderPages] = React.useState<PagesList>(pages)
+  const [headerPages, setHeaderPages] = React.useState<PagesList>([])
+  if (headerPages.length === 0) {
+    getPages().then((fetchedPages) => {
+      setHeaderPages(fetchedPages)
+    })
+  }
   if (actionData?.pages) {
     if (actionData.pages !== headerPages) {
       setHeaderPages(actionData.pages)

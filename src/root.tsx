@@ -1,12 +1,18 @@
 import { StrictMode } from 'react'
 import { Outlet, Scripts } from 'react-router'
 import './index.css'
-import { resources, languages, setLanguage } from './lib/languages'
+import { resources, setLanguage, getLanguages } from './lib/languages'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
 import i18next from 'i18next'
 
 const browserLocale = navigator.language.split('-')[0]
-const initLocale = languages.find(language => language.code === browserLocale)?.code ?? 'pl'
+let initLocale = 'pl'
+getLanguages().then((fetchedLanguages) => {
+  const destLang = fetchedLanguages.find(language => language.code === browserLocale)?.code
+  if (destLang) {
+    initLocale = destLang
+  }
+})
 i18next.use(initReactI18next).init({
   resources,
   lng: initLocale,

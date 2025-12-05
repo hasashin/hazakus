@@ -35,8 +35,6 @@ export async function getLanguages(){
     return languages;
 }
 
-export const languages = await getLanguages()
-
 export let language = i18n.language
 
 export const setLanguage = (newLocale: string) => {

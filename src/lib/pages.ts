@@ -30,4 +30,10 @@ export async function getPages() : Promise<PagesList> {
   return pages;
 }
 
-export const pages = await getPages();
+export function usePages() : PagesList {
+  let pages: PagesList = [];
+  getPages().then((fetchedPages) => {
+    pages = fetchedPages;
+  })
+  return pages;
+}

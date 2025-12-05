@@ -1,4 +1,4 @@
-import { ContentContainer } from '@/components/contentContainer'
+import { ContentContainer } from './contentContainer'
 
 export function Hazaksus() {
   return (
