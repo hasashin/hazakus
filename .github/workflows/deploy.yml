@@ -41,19 +41,19 @@ jobs:
           echo "$VITE_BackendApiKey" | echo "Backend API Key: $(head - -c 4)..."
         env:
           VITE_BackendApiKey: ${{ secrets.API_KEY }}
-          VITE_BackendHost: ${{ vars.BACKEND_HOST }}
+          VITE_BackendHost: ${{ vars.API_HOST }}
       - name: Install dependencies
         run: npm ci
       - name: Test types 
         run: npm run typecheck
         env:
           VITE_BackendApiKey: ${{ secrets.API_KEY }}
-          VITE_BackendHost: ${{ vars.BACKEND_HOST }}
+          VITE_BackendHost: ${{ vars.API_HOST }}
       - name: Build
         run: npm run build
         env:
           VITE_BackendApiKey: ${{ secrets.API_KEY }}
-          VITE_BackendHost: ${{ vars.BACKEND_HOST }}
+          VITE_BackendHost: ${{ vars.API_HOST }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
