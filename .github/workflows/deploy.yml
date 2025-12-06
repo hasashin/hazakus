@@ -41,12 +41,12 @@ jobs:
         run: npm run typecheck
         env:
           VITE_BackendApiKey: ${{ secrets.API_KEY }}
-          VITE_BackendHost: ${{ secrets.BACKEND_HOST }}
+          VITE_BackendHost: ${{ vars.BACKEND_HOST }}
       - name: Build
         run: npm run build
         env:
           VITE_BackendApiKey: ${{ secrets.API_KEY }}
-          VITE_BackendHost: ${{ secrets.BACKEND_HOST }}
+          VITE_BackendHost: ${{ vars.BACKEND_HOST }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
