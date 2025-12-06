@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { Outlet, Scripts } from 'react-router'
+import { Links, Meta, Outlet, Scripts } from 'react-router'
 import './index.css'
 import { resources, setLanguage, getLanguages } from './lib/languages'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
@@ -28,8 +28,10 @@ export default function Root() {
     <html>
       <head>
         <meta charSet="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+        <Meta />
+        <Links />
         <title>Dominik Hażak</title>
       </head>
       <body>
