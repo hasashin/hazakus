@@ -35,6 +35,13 @@ jobs:
         with:
           node-version: lts/*
           cache: 'npm'
+      - name: Print setup
+        run: |
+          echo "Backend Host: $VITE_BackendHost"
+          echo "$VITE_BackendApiKey" | echo "Backend API Key: $(head - -c 4)..."
+        env:
+          VITE_BackendApiKey: ${{ secrets.API_KEY }}
+          VITE_BackendHost: ${{ vars.BACKEND_HOST }}
       - name: Install dependencies
         run: npm ci
       - name: Test types 
