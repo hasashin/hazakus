@@ -1,11 +1,18 @@
-import { ContentContainer } from './contentContainer'
+import { cn } from '@/lib/utils'
 
-export function Hazaksus() {
+export interface HazaksusProps {
+  variant?: 'default' | 'loading'
+}
+
+export function Hazaksus({ variant = 'default' }: HazaksusProps) {
   return (
-    <ContentContainer>
-      <p className="text-center text-primary text-5xl mt-40">
-        hazak.ඞ
-      </p>
-    </ContentContainer>
+    <p className={
+      cn(
+        'text-center text-primary text-5xl mt-40',
+        variant === 'loading' ? 'motion-safe:animate-bounce' : '')
+    }
+    >
+      hazak.ඞ
+    </p>
   )
 }

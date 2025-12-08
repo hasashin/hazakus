@@ -4,6 +4,9 @@ import './index.css'
 import { resources, setLanguage, getLanguages } from './lib/languages'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
 import i18next from 'i18next'
+import ErrorPage from './ErrorPage'
+import type { Route } from './+types/root'
+import LoadingPage from './LoadingPage'
 
 const browserLocale = navigator.language.split('-')[0]
 let initLocale = 'pl'
@@ -23,9 +26,9 @@ i18next.use(initReactI18next).init({
 })
 setLanguage(initLocale)
 
-export default function Root() {
+export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
+    <html className="dark">
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,7 +41,7 @@ export default function Root() {
         <div id="root">
           <StrictMode>
             <I18nextProvider i18n={i18next}>
-              <Outlet />
+              { children }
               <Scripts />
             </I18nextProvider>
           </StrictMode>
@@ -46,4 +49,17 @@ export default function Root() {
       </body>
     </html>
   )
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  return (
+    <ErrorPage error={error} />
+  )
+}
+export function HydrateFallback() {
+  return <LoadingPage />
+}
+
+export default function Root() {
+  return <Outlet />
 }

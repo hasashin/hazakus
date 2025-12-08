@@ -1,21 +1,12 @@
+import type { BlocksContent } from '@strapi/blocks-react-renderer'
 import type { StrapiStandardFields } from './common'
+import type { StrapiComponentCapability } from './component'
 
-export interface StrapiPageElement {
-  type: string
-  children: StrapiPageElementText[]
+export type StrapiPageIndex = StrapiStandardFields & {
+  intro: BlocksContent
+  capabilities: StrapiComponentCapability[]
 }
 
-export type StrapiPageElementText = StrapiPageElement & {
-  type: 'text'
-  text: string
-  bold?: boolean
-}
-
-export type StrapiPageElementParagraph = StrapiPageElement & {
-  type: 'paragraph'
-  children: StrapiPageElementText[]
-}
-
-export type StrapiPage = StrapiStandardFields & {
-  content: StrapiPageElement[]
+export type StrapiPageBio = StrapiStandardFields & {
+  content: BlocksContent
 }

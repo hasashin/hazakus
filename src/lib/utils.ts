@@ -1,13 +1,12 @@
+import type { StrapiResponse } from "@/types/common"
 import { clsx, type ClassValue } from "clsx"
-import type { JSX } from "react"
 import { twMerge } from "tailwind-merge"
-import { Hazaksus } from '../components/hazaksus'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export async function strapiGet(type: string, filters: {[key:string]: string}): Promise<any> {
+export async function strapiGet(type: string, filters: {[key:string]: string}): Promise<StrapiResponse> {
   const apiBase = import.meta.env.VITE_BackendHost
   const apiToken = import.meta.env.VITE_BackendApiKey
   const mappedFilters = []
@@ -35,9 +34,4 @@ export async function strapiGet(type: string, filters: {[key:string]: string}): 
     }
   }
   return null;
-}
-
-
-export async function readPageContent(content: any): Promise<JSX.Element> {
-  return Hazaksus()
 }

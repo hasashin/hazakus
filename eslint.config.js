@@ -14,7 +14,7 @@ export default defineConfig(
     jsx: true,
     // ...
   }),
-  { ignores: ['dist', 'src/lib', 'src/components/ui', '.react-router'] },
+  { ignores: ['dist', 'src/lib', 'src/components/ui', '.react-router', 'src/components/animate-ui'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],

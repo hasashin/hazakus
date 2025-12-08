@@ -1,5 +1,5 @@
 import { strapiGet } from './utils'
-import type { StrapiResponse } from '../types/common'
+import type { StrapiPluralResponse } from '../types/common'
 import { language } from './languages'
 
 type Page = { 
@@ -20,7 +20,7 @@ export async function getPages() : Promise<PagesList> {
   let pages: PagesList = [];
   const lang = language ?? 'pl'
   const content = await strapiGet('pages', {locale: lang});
-  (content as StrapiResponse).data.map((elem) => {
+  (content as StrapiPluralResponse).data.map((elem) => {
     pages.push({
       url: elem.url,
       title: elem.title,

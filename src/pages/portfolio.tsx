@@ -1,20 +1,29 @@
 import { language } from '@/lib/languages'
-import { readPageContent, strapiGet } from '@/lib/utils'
+import { strapiGet } from '@/lib/utils'
 import type { Route } from './+types/portfolio'
 import { Hazaksus } from '@/components/hazaksus'
-import { ContentContainer } from '@/components/contentContainer'
+import { ContentParser } from '@/components/contentParser'
+import type { StrapiSingularResponse } from '@/types/common'
+import type { StrapiPageBio } from '@/types/single'
 
 export async function clientLoader() {
   const rawContent = await strapiGet('portfolio', { locale: language })
-  const content = rawContent ? await readPageContent(rawContent) : <Hazaksus />
-  return { content: content }
+  let content = null
+  if (rawContent) {
+    content = (rawContent as StrapiSingularResponse).data
+  }
+  return {
+    pageContent: content ? content : undefined,
+    children: content ? undefined : <Hazaksus />,
+  }
 }
 
 export default function PortfolioPage({ loaderData }: Route.ComponentProps) {
-  const { content } = loaderData
+  const { pageContent, children } = loaderData
+  const { content } = pageContent as StrapiPageBio
   return (
-    <ContentContainer>
-      { content }
-    </ContentContainer>
+    <ContentParser content={content}>
+      { children }
+    </ContentParser>
   )
 }

@@ -6,6 +6,9 @@ import { Footer } from './components/footer'
 import { getPages, type PagesList } from './lib/pages'
 import type { Route } from './+types/App'
 import React from 'react'
+import { GravityStarsBackground } from './components/animate-ui/components/backgrounds/gravity-stars'
+import LoadingPage from './LoadingPage'
+import { FadeOut } from './components/animate-ui/primitives/effects/fadeOut'
 
 export async function clientAction() {
   const pages = await getPages()
@@ -26,6 +29,8 @@ export default function App({ actionData }: Route.ComponentProps) {
   }
   return (
     <ThemeProvider>
+      <FadeOut><LoadingPage /></FadeOut>
+      <GravityStarsBackground className="absolute flex items-center justify-center -z-10 bg-background" />
       <Header pages={headerPages} />
       <Body>
         <Outlet />

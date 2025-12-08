@@ -1,9 +1,9 @@
 import translationEN from '../locales/en/strings.json'
 import translationPL from '../locales/pl/strings.json'
 import translationDEV from '../locales/dev/strings.json'
-import type { LocalePlural } from '@/types/common'
 import { strapiGet } from './utils'
 import i18n from 'i18next'
+import type { StrapiI18nLocale } from '@/types/plural'
 
 export const resources = {
   en: {
@@ -26,7 +26,7 @@ export type LanguagesList = LanguageElem[]
 export async function getLanguages(){
   let languages: LanguagesList = [];
     const content = await strapiGet('i18n/locales', {});
-    (content as LocalePlural).map((elem) => {
+    (content as StrapiI18nLocale[]).map((elem) => {
       languages.push({
         code: elem.code,
         name: elem.name,

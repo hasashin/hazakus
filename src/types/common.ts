@@ -1,4 +1,8 @@
 import type { StrapiI18nLocale, StrapiPage } from './plural'
+import type {
+  StrapiPageIndex,
+  StrapiPageBio,
+} from './single'
 
 export type StrapiStandardFields = {
   id: number
@@ -8,8 +12,27 @@ export type StrapiStandardFields = {
   publishedAt: string
 }
 
-export type StrapiResponse = {
-  data: [StrapiPage]
+export type StrapiMeta = {
+  pagination: {
+    page: number
+    pageSize: number
+    pageCount: number
+    total: number
+  }
 }
 
-export type LocalePlural = StrapiI18nLocale[]
+type StrapiPluralData = StrapiPage[]
+
+type StrapiSingularData = StrapiPageIndex | StrapiPageBio
+
+export type StrapiPluralResponse = {
+  data: StrapiPluralData
+  meta: StrapiMeta
+}
+
+export type StrapiSingularResponse = {
+  data: StrapiSingularData
+  meta: unknown
+}
+
+export type StrapiResponse = StrapiPluralResponse | StrapiSingularResponse | StrapiI18nLocale[] | null
