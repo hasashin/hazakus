@@ -51,11 +51,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 
-// export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-//   return (
-//     <ErrorPage error={error} />
-//   )
-// }
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  return (
+    <ErrorPage error={error} />
+  )
+}
 export function HydrateFallback() {
   return <LoadingPage />
 }
