@@ -4,7 +4,7 @@ import type { Route } from './+types/index'
 import { Hazaksus } from '@/components/hazaksus'
 import { ContentParser } from '@/components/contentParser'
 import type { StrapiSingularResponse } from '@/types/common'
-import type { StrapiPageBio } from '@/types/single'
+import type { StrapiPageContact } from '@/types/single'
 
 export async function clientLoader() {
   const rawContent = await strapiGet('contact', { locale: language })
@@ -20,9 +20,9 @@ export async function clientLoader() {
 
 export default function ContactPage({ loaderData }: Route.ComponentProps) {
   const { pageContent, children } = loaderData
-  const { content } = pageContent as StrapiPageBio
+  const { intro } = pageContent as StrapiPageContact
   return (
-    <ContentParser content={content}>
+    <ContentParser content={intro}>
       { children }
     </ContentParser>
   )

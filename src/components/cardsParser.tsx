@@ -16,7 +16,7 @@ export interface CardsParserProps {
 
 function ParseCards(items: StrapiComponentCapability[]) {
   const cards = items.map(item => (
-    <Card>
+    <Card className="max-w-sm min-h-40">
       <CardHeader>
         <CardTitle>{ item.title }</CardTitle>
       </CardHeader>

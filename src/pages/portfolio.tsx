@@ -4,7 +4,7 @@ import type { Route } from './+types/portfolio'
 import { Hazaksus } from '@/components/hazaksus'
 import { ContentParser } from '@/components/contentParser'
 import type { StrapiSingularResponse } from '@/types/common'
-import type { StrapiPageBio } from '@/types/single'
+import type { StrapiPagePortfolio } from '@/types/single'
 
 export async function clientLoader() {
   const rawContent = await strapiGet('portfolio', { locale: language })
@@ -20,9 +20,9 @@ export async function clientLoader() {
 
 export default function PortfolioPage({ loaderData }: Route.ComponentProps) {
   const { pageContent, children } = loaderData
-  const { content } = pageContent as StrapiPageBio
+  const { intro } = pageContent as StrapiPagePortfolio
   return (
-    <ContentParser content={content}>
+    <ContentParser content={intro}>
       { children }
     </ContentParser>
   )

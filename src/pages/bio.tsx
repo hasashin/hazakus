@@ -20,9 +20,9 @@ export async function clientLoader() {
 
 export default function BioPage({ loaderData }: Route.ComponentProps) {
   const { pageContent, children } = loaderData
-  const { content } = pageContent as StrapiPageBio
+  const { intro } = pageContent as StrapiPageBio
   return (
-    <ContentParser content={content}>
+    <ContentParser content={intro}>
       { children }
     </ContentParser>
   )

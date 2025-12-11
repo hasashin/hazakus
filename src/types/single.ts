@@ -8,5 +8,13 @@ export type StrapiPageIndex = StrapiStandardFields & {
 }
 
 export type StrapiPageBio = StrapiStandardFields & {
-  content: BlocksContent
+  intro: BlocksContent
+}
+
+export type StrapiPagePortfolio = StrapiStandardFields & {
+  intro: BlocksContent
+}
+
+export type StrapiPageContact = StrapiStandardFields & {
+  intro: BlocksContent
 }
