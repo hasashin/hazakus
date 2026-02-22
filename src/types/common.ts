@@ -1,8 +1,5 @@
 import type { StrapiI18nLocale, StrapiPage } from './plural'
-import type {
-  StrapiPageIndex,
-  StrapiPageBio,
-} from './single'
+import type { StrapiPageSingle } from './single'
 
 export type StrapiStandardFields = {
   id: number
@@ -23,7 +20,8 @@ export type StrapiMeta = {
 
 type StrapiPluralData = StrapiPage[]
 
-type StrapiSingularData = StrapiPageIndex | StrapiPageBio
+// Left for future use, in case of more complex single types
+type StrapiSingularData = StrapiPageSingle
 
 export type StrapiPluralResponse = {
   data: StrapiPluralData

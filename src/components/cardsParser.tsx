@@ -8,13 +8,16 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Button } from './ui/button'
-import { DynamicIcon, iconNames, type IconName } from 'lucide-react/dynamic'
+import { DynamicIcon, iconNames } from 'lucide-react/dynamic'
+import type { IconName } from 'lucide-react/dynamic'
+
+export type CardElement = StrapiComponentCapability
 
 export interface CardsParserProps {
-  content?: StrapiComponentCapability[]
+  content?: CardElement[]
 }
 
-function ParseCards(items: StrapiComponentCapability[]) {
+function ParseCards(items: CardElement[]) {
   const cards = items.map(item => (
     <Card className="max-w-sm min-h-40">
       <CardHeader>
