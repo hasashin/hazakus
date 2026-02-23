@@ -4,7 +4,7 @@ import type { Route } from './+types/bio'
 import { Hazaksus } from '@/components/hazaksus'
 import { ContentParser } from '@/components/contentParser'
 import type { StrapiSingularResponse } from '@/types/common'
-import type { StrapiPageBio } from '@/types/single'
+import type { StrapiPageSingle } from '@/types/single'
 
 export async function clientLoader() {
   const rawContent = await strapiGet('bio', { locale: language })
@@ -20,9 +20,8 @@ export async function clientLoader() {
 
 export default function BioPage({ loaderData }: Route.ComponentProps) {
   const { pageContent, children } = loaderData
-  const { intro } = pageContent as StrapiPageBio
   return (
-    <ContentParser content={intro}>
+    <ContentParser content={pageContent as StrapiPageSingle}>
       { children }
     </ContentParser>
   )

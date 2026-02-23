@@ -4,3 +4,9 @@ export type StrapiComponentCapability = {
   description?: string
   iconName?: string
 }
+
+export type StrapiComponentPageLayout = {
+  id: number
+  Name: string
+  Type: string
+}

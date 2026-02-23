@@ -1,20 +1,10 @@
-import type { BlocksContent } from '@strapi/blocks-react-renderer'
 import type { StrapiStandardFields } from './common'
-import type { StrapiComponentCapability } from './component'
+import type { StrapiComponentPageLayout } from './component'
 
-export type StrapiPageIndex = StrapiStandardFields & {
-  intro: BlocksContent
-  capabilities: StrapiComponentCapability[]
+type StrapiPageGeneric = {
+  [key: string]: unknown
 }
 
-export type StrapiPageBio = StrapiStandardFields & {
-  intro: BlocksContent
-}
-
-export type StrapiPagePortfolio = StrapiStandardFields & {
-  intro: BlocksContent
-}
-
-export type StrapiPageContact = StrapiStandardFields & {
-  intro: BlocksContent
-}
+export type StrapiPageSingle = StrapiStandardFields & {
+  pageLayout: [StrapiComponentPageLayout]
+} & StrapiPageGeneric
