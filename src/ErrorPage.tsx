@@ -5,6 +5,7 @@ import { Footer } from '@/components/footer'
 import { Button } from './components/ui/button'
 import { Link } from 'react-router'
 import { ContentParser } from '@/components/contentParser'
+import { Home } from 'lucide-react'
 
 export default function ErrorPage({ error }: { error: unknown }) {
   return (
@@ -27,6 +28,7 @@ export default function ErrorPage({ error }: { error: unknown }) {
             : null }
           <div className="text-center mt-10">
             <Button variant="outline" className="p-5">
+              <Home />
               <Link to="/" className="text-primary!">
                 Let's get back to main page
               </Link>
