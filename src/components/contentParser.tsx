@@ -2,6 +2,7 @@ import React from 'react'
 import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer'
 import type { StrapiPageSingle } from '@/types/single'
 import { CardsParser, type CardElement } from './cardsParser'
+import { CarouselBuilder, type CarouselElement } from './carouselBuilder'
 
 export interface ContentParserProps {
   children?: React.ReactNode
@@ -42,6 +43,11 @@ function ParseContent(content: StrapiPageSingle) {
       case 'cards':
         translatedContent.push(
           <CardsParser content={content[elem.Name] as CardElement[]} />,
+        )
+        break
+      case 'carousel':
+        translatedContent.push(
+          <CarouselBuilder content={content[elem.Name] as CarouselElement[]} />
         )
         break
       // TODO: add carousel, markdown, and other new types of content

@@ -18,18 +18,18 @@ export interface CardsParserProps {
 }
 
 function ParseCards(items: CardElement[]) {
-  const cards = items.map(item => (
-    <Card className="max-w-sm min-h-40">
+  const cards = items.map((item, index) => (
+    <Card key={index} className="max-w-sm min-h-40">
       <CardHeader>
-        <CardTitle>{ item.title }</CardTitle>
+        <CardTitle className="text-2xl font-semibold">{ item.title }</CardTitle>
+        { item.iconName &&  iconNames.includes(item.iconName as IconName)
+          ? (
+              <CardAction>
+                <Button variant="link"><DynamicIcon name={item.iconName as IconName} /></Button>
+              </CardAction>
+            )
+          : null }
       </CardHeader>
-      { item.iconName && item.iconName in iconNames
-        ? (
-            <CardAction>
-              <Button variant="link"><DynamicIcon name={item.iconName as IconName} /></Button>
-            </CardAction>
-          )
-        : null }
       <CardContent>
         <CardDescription>{ item.description }</CardDescription>
       </CardContent>

@@ -15,20 +15,29 @@ import { Button } from '@/components/ui/button'
 import { Check, ChevronsUpDown } from 'lucide-react'
 import { getLanguages, setLanguage, language } from '@/lib/languages'
 import type { LanguagesList } from '@/lib/languages'
-import { useSubmit } from 'react-router'
 
 export function LanguageSwitcher() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState(language)
   const [languages, setLanguages] = React.useState<LanguagesList>([])
   const { t } = useTranslation()
-  const submit = useSubmit()
 
-  if (languages.length === 0) {
-    getLanguages().then((fetchedLanguages) => {
-      setLanguages(fetchedLanguages)
-    })
-  }
+  React.useEffect(() => {
+    let active = true
+
+    const loadLanguages = async () => {
+      const fetchedLanguages = await getLanguages()
+      if (active) {
+        setLanguages(fetchedLanguages)
+      }
+    }
+
+    loadLanguages()
+
+    return () => {
+      active = false
+    }
+  }, [])
 
   const handleLanguageChange = (newLangValue: string) => {
     const newLang = languages.find(lang => lang.code === newLangValue)?.code || 'dev'
@@ -62,13 +71,18 @@ export function LanguageSwitcher() {
                   key={language.code}
                   value={language.code}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? '' : currentValue)
                     setOpen(false)
+                    if (currentValue === value) {
+                      return
+                    }
+                    setValue(currentValue)
                     handleLanguageChange(currentValue)
-                    submit(
-                      { selectedLanguage: currentValue },
-                      { action: '/', method: 'post' },
-                    )
+                    // submit(
+                    //   { 
+                    //     selectedLanguage: currentValue,
+                    //   },
+                    //   { action: '/', method: 'post' },
+                    // )
                   }}
                 >
                   {language.name}

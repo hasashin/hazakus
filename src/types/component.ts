@@ -10,3 +10,5 @@ export type StrapiComponentPageLayout = {
   Name: string
   Type: string
 }
+
+export type StrapiComponentTechnology = string
