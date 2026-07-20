@@ -23,12 +23,12 @@ export function Header({ pages }: HeaderProps) {
         </div>
         <div className="hidden md:flex items-left w-full">
           <MainMenu pages={pages} />
-          <Spacer />
+          <div className="flex-grow" />
           <ModeToggle />
           <LanguageSwitcher />
         </div>
         <div className="flex md:hidden items-left w-full pr-2">
-          <Spacer />
+          <div className="flex-grow" />
           <MainMenu pages={pages} variant="mobile" />
         </div>
       </div>

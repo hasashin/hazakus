@@ -3,6 +3,8 @@ import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-rendere
 import type { StrapiPageSingle } from '@/types/single'
 import { CardsParser, type CardElement } from './cardsParser'
 import { CarouselBuilder, type CarouselElement } from './carouselBuilder'
+import { Spacer } from './spacer'
+import type { StrapiComponentSpacer } from '@/types/component'
 
 export interface ContentParserProps {
   children?: React.ReactNode
@@ -50,7 +52,24 @@ function ParseContent(content: StrapiPageSingle) {
           <CarouselBuilder content={content[elem.Name] as CarouselElement[]} />
         )
         break
-      // TODO: add carousel, markdown, and other new types of content
+      case 'spacer':
+        translatedContent.push(
+          <Spacer spacerData={content[elem.Name] as StrapiComponentSpacer} />
+        )
+        break
+      case 'markdown':
+        translatedContent.push(
+          <div className="prose max-w-none">
+            {content[elem.Name] as string}
+          </div>
+        )
+        break
+      case 'json':
+        translatedContent.push(
+          <div>
+            {content[elem.Name] as string}
+          </div>
+        )
       default:
         break
     }
@@ -63,7 +82,7 @@ export function ContentParser({ children, content }: ContentParserProps) {
   return (
     <div className="grow items-center align-middle justify-center">
       { children }
-      { ...translatedContent}
+      { translatedContent }
     </div>
   )
 }

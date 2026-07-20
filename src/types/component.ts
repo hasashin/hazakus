@@ -11,4 +11,9 @@ export type StrapiComponentPageLayout = {
   Type: string
 }
 
+export type StrapiComponentSpacer = {
+  id: number
+  size: "xs" | "sm" | "md" | "lg" | "xl"
+}
+
 export type StrapiComponentTechnology = string
